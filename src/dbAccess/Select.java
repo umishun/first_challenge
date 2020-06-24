@@ -15,9 +15,13 @@ public class Select implements DBAccess {
 		
 		Dao dao = null;
 		
+		String year = request.getParameter("year");
+		String month= request.getParameter("month");
+		String day = request.getParameter("day");
+		
 		try {
 			dao = new Dao();
-			ArrayList<Dto> list = dao.getMoney();
+			ArrayList<Dto> list = dao.getMoney(year,month,day);
 			if(list.size() > 0) {
 				request.setAttribute("list", list);
 			}else {

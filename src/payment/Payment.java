@@ -1,4 +1,4 @@
-package test1;
+package payment;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,16 +16,16 @@ import dbAccess.Insert;
 import dbAccess.Select;
 
 /**
- * Servlet implementation class Main
+ * Servlet implementation class Payment
  */
-@WebServlet("/Main")
-public class Main extends HttpServlet {
+@WebServlet("/Payment")
+public class Payment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static DBAccess dbAccess;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Main() {
+    public Payment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +34,9 @@ public class Main extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 		
-		dbAccess = new Insert();
+		DBAccess dbAccess = new Select();
 		
 		try {
 			dbAccess.execute(request);
@@ -56,6 +47,27 @@ public class Main extends HttpServlet {
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/main.jsp");
 		dis.forward(request, response);
+		 
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String btn =request.getParameter("btn");
+		if(btn == "登録") {
+			dbAccess = new Insert();
+			
+			try {
+				dbAccess.execute(request);
+			}catch(SQLException e){
+				e.printStackTrace();
+			
+			} 	
+		}	
+		
+		doGet(request, response);
 	}
 
 }

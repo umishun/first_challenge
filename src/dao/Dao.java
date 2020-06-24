@@ -13,7 +13,9 @@ public class Dao {
 
 	private Connection con;
 	private String sql;
-	
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+
 	/**
 	 * コンストラクタ
 	 * @throws SQLException
@@ -47,9 +49,9 @@ public class Dao {
 	 * @return お気に入り店舗のIDリスト
 	 * @throws SQLException
 	 */
-	public ArrayList<Dto> getMoney() throws SQLException{
+	public ArrayList<Dto> getMoney(String year,String month, String day) throws SQLException{
 		// SQL
-		sql = "select * from nyushutsu";
+		sql = "select * from nyushutsu where year = ? and month = ? and day = ?";
 		PreparedStatement ps = null;
 		
 		ResultSet rs = null;
@@ -60,7 +62,10 @@ public class Dao {
 		try {
 			// プレースホルダを設定
 			ps = con.prepareStatement(sql);
-			//ps.setString(1, accountId);
+			ps.setString(1, year);
+			ps.setString(2, month);
+			ps.setString(3, day);
+			
 
 			// SQL実行して戻り値として実行結果をrsに代入している。	
 			rs = ps.executeQuery();
@@ -70,9 +75,11 @@ public class Dao {
 				// 店舗IDを取得してリストへ格納
 				item.setMoney(rs.getInt("money"));
 				item.setMonth(rs.getInt("month"));
-				item.setKubun(rs.getInt("Kubun"));
+				item.setKubun(rs.getBoolean("Kubun"));
 				item.setBuy(rs.getString("buy"));
+				item.setId(rs.getInt("id"));
 				list.add(item);
+				
 			}
 			rs.close();
 		}finally {
@@ -81,5 +88,39 @@ public class Dao {
 		
 		return list;
 	}
-	
+	public int setMoney(Dto dto)  throws SQLException{
+		
+		sql = "insert into nyushutsu(money,kubun,month,buy,year,day) values(?,?,?,?,?,?)";
+		int n = 0;
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, dto.getMoney());
+			ps.setBoolean(2, dto.getKubun());
+			ps.setInt(3, dto.getMonth());
+			ps.setString(4, dto.getBuy());
+			ps.setInt(5, dto.getYear());
+			ps.setInt(6, dto.getDay());
+			
+			n = ps.executeUpdate();
+		}finally {
+			ps.close();
+		}
+		return n;
+	}
+	public int DeleteId(Dto dto)  throws SQLException{
+		
+		sql = "Delete from nyushutsu where id=?";
+		int n = 0;
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, dto.getId());
+			
+			n = ps.executeUpdate();
+		}finally {
+			ps.close();
+		}
+		return n;
+	}
 }
