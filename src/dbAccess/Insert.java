@@ -20,7 +20,9 @@ public class Insert implements DBAccess {
 		String product =request.getParameter("product");
 		String price =request.getParameter("price");
 		String shupi =request.getParameter("shupi");
-		
+		String year = request.getParameter("year");
+		String day = request.getParameter("day");
+		String month =request.getParameter("month");
 		
 		if(product !=null && !product.isEmpty() 
 			&& price != null && !price.isEmpty()&& Judge.isNumber(price)
@@ -30,6 +32,10 @@ public class Insert implements DBAccess {
 			dto.setBuy(product);
 			dto.setMoney(Integer.parseInt(price));
 			dto.setKubun(Boolean.parseBoolean(shupi));
+			dto.setYear(Integer.parseInt(year));
+			dto.setDay(Integer.parseInt(day));
+			dto.setMonth(Integer.parseInt(month));
+			
 			try {
 				dao = new Dao();
 				n = dao.setMoney(dto);

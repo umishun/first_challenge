@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body {
+	/* background-image: url("photo21.jpg"); */
+	background-size: cover;
+	background-position: right 0% bottom 70%;
+	background-color: #90A4AE;
+	color:#008000;
+	font-size :20px;
+	font-family: "Yu Gothic";
+	font-weight: bold;
+	color: white;
+	/* text-shadow: 15px 15px 15px black; */
+}
+
+.inner{
+    position: relative;
+    width: 500px;
+    margin: 133px auto;
+    text-align: center;
+}
+
+tr {
+	width: 100px;
+}
+
+td {
+	width: 400px;
+}
+
+a:visited{
+	color:#ffff00;
+}
+
+p {
+	color:#ffffff;
+}
+
+table{
+	border: 1px solid white;
+}
+
+
+
+.container {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: #90A4AE;
+}
+
+.btn-box {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffff00;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  position: relative;
+  border: 2px solid #ffff00;
+  transition: .4s;
+  background-color:transparent;
+}
+
+.delete {
+	width:100px; 
+	height:50px;
+}
+
+.btn-box:hover {
+  border: 2px solid transparent;
+  color: #FFF;
+}
+
+.btn-box:before, .btn-box:after {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  transform: scale(0);
+  transition: .2s;
+}
+
+.btn-box:before {
+  border-bottom: 2px solid #FFF;
+  border-left: 2px solid #FFF;
+  transform-origin: 100% 0%;
+}
+
+.btn-box:after {
+  border-top: 2px solid #FFF;
+  border-right: 2px solid #FFF;
+  transform-origin: 0% 100%;
+}
+
+.btn-box:hover:after,
+.btn-box:hover:before {
+  transform: scale(1);
+}	

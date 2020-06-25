@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbAccess.DBAccess;
+import dbAccess.Delete;
 import dbAccess.Insert;
 import dbAccess.Select;
 
@@ -34,7 +35,14 @@ public class Payment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String year = request.getParameter("year");
+		String day = request.getParameter("day");
+		String month =request.getParameter("month");
 		
+		request.setAttribute("year", year);
+		request.setAttribute("day", day);
+		request.setAttribute("month", month);
 		
 		DBAccess dbAccess = new Select();
 		
@@ -45,7 +53,7 @@ public class Payment extends HttpServlet {
 		
 	}
 		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/main.jsp");
+		RequestDispatcher dis = context.getRequestDispatcher("/payment.jsp");
 		dis.forward(request, response);
 		 
 	}
@@ -55,8 +63,8 @@ public class Payment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String btn =request.getParameter("btn");
-		if(btn == "登録") {
+		String btn =request.getParameter("btn");//押されたボタンを取得している
+		if(btn.equals("登録")) {
 			dbAccess = new Insert();
 			
 			try {
@@ -65,7 +73,16 @@ public class Payment extends HttpServlet {
 				e.printStackTrace();
 			
 			} 	
-		}	
+		}
+		if(btn.equals("削除")) {
+			dbAccess = new Delete();
+		
+			try {
+				dbAccess.execute(request);
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		doGet(request, response);
 	}
