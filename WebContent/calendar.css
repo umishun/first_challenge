@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+body {
+	/* background-image: url("photo21.jpg"); */
+	background-size: cover;
+	background-position: right 0% bottom 70%;
+	background-color: #90A4AE;
+	color:#008000;
+	font-size :20px;
+	font-family: "Yu Gothic";
+	font-weight: bold;
+	color: white;
+	/* text-shadow: 15px 15px 15px black; */
+}
+
 #calendar {
     display: flex;
     flex-wrap: wrap;
@@ -34,4 +47,63 @@ td:last-child {
 
 td.is-disabled {
     color: #ccc;
+}
+
+
+
+
+.container {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
+
+/* ここから下がボタンのCSS　*/
+.btn-animation-02 {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  background-color: #90A4AE;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #ffff00;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.btn-animation-02 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-animation-02::before,
+.btn-animation-02::after {
+  content: "";
+  display: block;
+  background-color: #90a4ae;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+}
+.btn-animation-02::before {
+  left: 0;
+}
+.btn-animation-02::after {
+  right: 0;
+}
+
+.btn-animation-02:hover:before,
+.btn-animation-02:hover:after {
+  width: 0;
+  background-color: #BDBDBD;
+}
+
+.btn-animation-02:hover {
+  color: #FFF;
 }

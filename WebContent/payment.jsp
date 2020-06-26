@@ -12,22 +12,32 @@
 <body>
 	<div class="inner">
 
-
-		<c:forEach var="item" items="${list}">
-		
-			${item.month}
-			${item.money}
-			${item.kubun}
-			${item.buy}
+			${year}/${month}/${day}
 			
+		<c:forEach var="item" items="${list}">
 			<c:if test="${item.kubun == false}">
 				<p>出費</p>
 			</c:if>	
 			<c:if test="${item.kubun == true}">
 				<p>収入</p>
 			</c:if>
+			
+			<table>
+				<tr>
+					<td>${item.buy}</td>
+					<td>
+						<c:if test="${item.kubun == false}">
+							<p>出費</p>
+						</c:if>	
+						<c:if test="${item.kubun == true}">
+							<p>収入</p>
+						</c:if>
+					</td>
+					<td>${item.money}</td>
+				</tr>
+			</table>
 		
-			<form action="Payment" method="post">	
+			<form action="Payment" class="delete-form" method="post">	
 				<input type="submit" class="btn-box delete" name="btn" value="削除">  
 				<input type="hidden" name="id" value="${item.id}">
 				<input type="hidden" name="year" value="${year}">
