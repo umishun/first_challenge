@@ -34,6 +34,7 @@ a:visited{
 
 p {
 	color:#ffffff;
+	font-size:50px;
 }
 
 table{
@@ -72,7 +73,7 @@ table{
 
 .btn-box:hover {
   border: 2px solid transparent;
-  color: 90A4AE;
+  color: #FFF;
 }
 
 .btn-box:before, .btn-box:after {
@@ -89,13 +90,13 @@ table{
 }
 
 .btn-box:before {
-  border-bottom: 2px solid #90A4AE;
-  border-left: 2px solid #90A4AE;
+  border-bottom: 2px solid #FFF;
+  border-left: 2px solid #FFF;
   transform-origin: 100% 0%;
 }
 
 .btn-box:after {
-  border-top: 2px solid #90A4AE;
+  border-top: 2px solid #FFF;
   border-right: 2px solid #FFF;
   transform-origin: 0% 100%;
 }
@@ -106,5 +107,5 @@ table{
 }	
 
 .delete-form {
-	margin:20px 0;
+	margin:20px;
 }

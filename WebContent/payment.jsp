@@ -33,7 +33,7 @@
 							<p>収入</p>
 						</c:if>
 					</td>
-					<td>${item.money}</td>
+					<td>${item.money}円</td>
 				</tr>
 			</table>
 		
