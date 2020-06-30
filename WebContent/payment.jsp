@@ -22,51 +22,53 @@
 				<p>収入</p>
 			</c:if>
 			
-			<table>
-				<tr>
-					<td>${item.buy}</td>
-					<td>
-						<c:if test="${item.kubun == false}">
-							<p>出費</p>
-						</c:if>	
-						<c:if test="${item.kubun == true}">
-							<p>収入</p>
-						</c:if>
-					</td>
-					<td>${item.money}円</td>
-				</tr>
-			</table>
-		
-			<form action="Payment" class="delete-form" method="post">	
-				<input type="submit" class="btn-box delete" name="btn" value="削除">  
-				<input type="hidden" name="id" value="${item.id}">
-				<input type="hidden" name="year" value="${year}">
-				<input type="hidden" name="day" value="${day}">
-				<input type="hidden" name="month" value="${month}">
-			</form>	
+			<div class="datas">
+				<table class="show-tbl">
+					<tr>
+						<td>${item.buy}</td>
+						<td>
+							<c:if test="${item.kubun == false}">
+								<p>出費</p>
+							</c:if>	
+							<c:if test="${item.kubun == true}">
+								<p>収入</p>
+							</c:if>
+						</td>
+						<td>${item.money}円</td>
+					</tr>
+				</table>
+			
+				<form action="Payment" class="delete-form" method="post">	
+					<input type="submit" class="btn-box delete" name="btn" value="削除">  
+					<input type="hidden" name="id" value="${item.id}">
+					<input type="hidden" name="year" value="${year}">
+					<input type="hidden" name="day" value="${day}">
+					<input type="hidden" name="month" value="${month}">
+				</form>	
+			</div>
 		</c:forEach>
 			
-			<form action="Payment" method="post">
-				<table class="post-form">
-					<tr>
-						<th>商品</th><td><input type="text" name="product"></td>
-					</tr>
-					<tr>
-						<th>値段</th><td><input type="text" name="price"></td>
-					</tr>
-					<tr>
-						<th></th><td><input type="radio" name="shupi">収入<input type="radio" name="shupi">支出</td>
-					</tr>
-								
-				</table>
-				<div class="container">
-				<input type="submit" class="btn-box" name="btn" value="登録">
-				
-				</div>
-				<input type="hidden" name="year" value="${year}">
-				<input type="hidden" name="day" value="${day}">
-				<input type="hidden" name="month" value="${month}">
-			</form>
+		<form action="Payment" method="post">
+			<table class="post-form">
+				<tr>
+					<th>商品</th><td><input type="text" name="product"></td>
+				</tr>
+				<tr>
+					<th>値段</th><td><input type="text" name="price"></td>
+				</tr>
+				<tr>
+					<th></th><td><input type="radio" name="shupi" value="true">収入<input type="radio" name="shupi" value="false">支出</td>
+				</tr>
+							
+			</table>
+			<div class="container">
+			<input type="submit" class="btn-box" name="btn" value="登録">
+			
+			</div>
+			<input type="hidden" name="year" value="${year}">
+			<input type="hidden" name="day" value="${day}">
+			<input type="hidden" name="month" value="${month}">
+		</form>
 	
 			
 		<c:if test="${message != null }">

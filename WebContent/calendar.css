@@ -23,6 +23,14 @@ section {
     margin: 10px;
 }
 
+.title {
+ border-bottom: 2px solid #fff;	
+}
+
+.title p{
+ margin-bottom: 0;	
+}
+
 h1 {
     font-size: 18px;
 }

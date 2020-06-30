@@ -24,6 +24,7 @@ public class Insert implements DBAccess {
 		String day = request.getParameter("day");
 		String month =request.getParameter("month");
 		
+		System.out.println(shupi);
 		if(product !=null && !product.isEmpty() 
 			&& price != null && !price.isEmpty()&& Judge.isNumber(price)
 			&& shupi != null && !shupi.isEmpty()) {

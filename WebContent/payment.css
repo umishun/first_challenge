@@ -20,12 +20,14 @@ body {
     text-align: center;
 }
 
-tr {
-	width: 100px;
+.show-tbl tr {
+	width: 50px;
+	height:50px;
 }
 
-td {
-	width: 400px;
+.show-tbl td {
+	width: 120px;
+	
 }
 
 a:visited{
@@ -34,11 +36,11 @@ a:visited{
 
 p {
 	color:#ffffff;
-	font-size:50px;
 }
 
 table{
 	border: 1px solid white;
+	float: left;
 }
 
 
@@ -106,6 +108,38 @@ table{
   transform: scale(1);
 }	
 
+
 .delete-form {
-	margin:20px;
+	padding-top: 10px;
+	margin-left: 20px;
+}
+
+.show-tbl{
+	float:left;
+}
+
+.datas{
+	height: 100px;
+}
+
+.post-form {
+	float: none;
+}
+
+.post-form tr {
+	height:50px;
+}
+
+.post-form td {
+	width: 400px;
+	
+}
+
+.post-form th {
+	width: 100px;
+	
+}
+
+input[type="text"]{
+	width: 370px;
 }
